@@ -216,6 +216,10 @@ class Client extends EventEmitter {
 
   write (name, params) {
     if (!this.serializer.writable) { return }
+    if (name.includes("position")) {
+      params.x = Math.round(params.x * 100) / 100
+      params.z = Math.round(params.z * 100) / 100
+    }
     debug('writing packet ' + this.state + '.' + name)
     debug(params)
     this.serializer.write({ name, params })
