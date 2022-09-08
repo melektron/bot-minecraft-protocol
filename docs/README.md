@@ -1,3 +1,14 @@
+# Bot minecraft protocol
+
+Bot minecraft protocol slightly modifys C2S position packets by removing all decimal places after the hundredths digit on the X and Z coordinates to bypass LiveOverflow's "human player detection". Reducing the accruracy of position packets in this way can result in glitching and rubber banding when colliding with blocks as the player entity hitbox may slightly overlap with the block hitbox. As of right now, there is no workaround implemented to avoid this behaviour, however in many cases it is not necessary especially for bot's that don't move.
+
+Other than that, this fork operates exactly like PrismarineJS/node-minecraft-protocol and can be used as a drop in replacement, installed using
+```bash
+npm install git://github.com/melektron/bot-minecraft-protocol.git
+```
+
+Original README.md:
+
 # minecraft protocol
 [![NPM version](https://img.shields.io/npm/v/minecraft-protocol.svg)](https://www.npmjs.com/package/minecraft-protocol)
 [![Build Status](https://github.com/PrismarineJS/node-minecraft-protocol/workflows/CI/badge.svg)](https://github.com/PrismarineJS/node-minecraft-protocol/actions?query=workflow%3A%22CI%22)
